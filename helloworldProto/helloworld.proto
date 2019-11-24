@@ -1,0 +1,32 @@
+syntax = "proto3";  //语法声明
+
+package helloworldProto; //包名
+
+// Greeter 微服务
+service Greeter {
+  // Sends a greeting
+  rpc SayHello (HelloRequest) returns (HelloReply) {}
+
+  rpc GetNum (NumRequest) returns (NumReply) {}
+}
+
+// HelloRequest 请求数据格式
+message HelloRequest {
+  string name = 1;
+}
+
+// HelloReply 响应数据格式
+message HelloReply {
+  string message = 1;
+}
+
+
+// HelloRequest 请求数据格式
+message NumRequest {
+  int32 id = 1;
+}
+
+// HelloReply 响应数据格式
+message NumReply {
+  int32 order = 1;
+}
