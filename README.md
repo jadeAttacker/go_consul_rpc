@@ -7,7 +7,10 @@ protoc --go_out=plugins=grpc:. helloworld.proto
 
 <!-- # 3. 实现接口 -->
 ```
+
+/**
 ## 此时，将在目录下生成helloworld.pb.go文件
+*/
 
 
 ## 不指定目录：protoc -I=目录1 --java_out=目录2 文件3  
@@ -45,10 +48,18 @@ docker run --name consul1 -d -p 8500:8500 -p 8300:8300 -p 8301:8301 -p 8302:8302
 
 docker run --name consul2 -d -p 8501:8500 consul agent -server -ui -bind=0.0.0.0 -client=0.0.0.0 -join 172.17.0.2
 docker run --name consul3 -d -p 8502:8500 consul agent -server -ui -bind=0.0.0.0 -client=0.0.0.0 -join 172.17.0.2
+<!-- 
+-d：表示后台运行 image-name:指定运行的镜像名称
+-p： 表示各种端口。8500:web ui端口 
+image-name:tag： 指定运行的镜像名称
+-bootstrap-expect： 期待集群有2个节点
+docker inspect --format '{{ .NetworkSettings.IPAddress }}' consul2： 获取 consul server1 的 ip 地址
 
+-->
 ```
-## 打开http://192.168.1.107:8500/ui/dc1/nodes/0b8ff3e89bac 查看节点信息
+## 打开`http://192.168.1.107:8500/ui/dc1/nodes/0b8ff3e89bac` 查看节点信息
 
 
 
-# 参考：https://www.cnblogs.com/chaselogs/p/11462954.html
+# 参考：`https://www.cnblogs.com/chaselogs/p/11462954.html` 
+# 参考：`https://www.cnblogs.com/lonelyxmas/p/10880717.html`

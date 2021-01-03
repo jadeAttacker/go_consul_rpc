@@ -22,6 +22,7 @@ const (
 var lastIndex uint64
 
 func main() {
+	// 寻址
 	addr2 := client_consul.Lookup()
 	// 建立链接
 	conn, err := grpc.Dial(addr2.(string), grpc.WithInsecure())

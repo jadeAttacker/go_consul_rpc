@@ -25,14 +25,14 @@ func RegisterServer() {
 
 	// consul的地址
 	config := consulapi.DefaultConfig()
-	config.Address = "192.168.1.107:8500"
+	config.Address = "192.168.1.106:8500"
 
 	client, err := consulapi.NewClient(config)
 	if err != nil {
 		log.Fatal("consul client error : ", err)
 	}
 
-	// 与consulapi.Agent绑定的一个service对象
+	// 注册服务节点
 	registration := new(consulapi.AgentServiceRegistration)
 
 	registration.ID = "serverNode_1"      // 服务节点的名称

@@ -13,7 +13,7 @@ var lastIndex uint64
 func Lookup() (addr interface{}) {
 	// consul寻址
 	config := api.DefaultConfig()
-	config.Address = "192.168.1.107:8500"
+	config.Address = "192.168.1.106:8500"
 
 	client, err := api.NewClient(config)
 
