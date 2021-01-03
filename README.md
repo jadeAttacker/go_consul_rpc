@@ -1,5 +1,6 @@
 #  protoc的使用
-## 1. 假设现在所在的目录是$GOPATH/src/helloworld/helloworld，我们将通过如下命令生成gRPC对应的GoLang代码
+## 假设现在所在的目录是$GOPATH/src/helloworld/helloworld，我们将通过如下命令生成gRPC对应的GoLang代码
+
 ```
 <!-- # 1. 编写proto文件 -->
 <!-- # 2. 生成 go文件 -->
@@ -8,9 +9,7 @@ protoc --go_out=plugins=grpc:. helloworld.proto
 <!-- # 3. 实现接口 -->
 ```
 
-/**
 ## 此时，将在目录下生成helloworld.pb.go文件
-*/
 
 
 ## 不指定目录：protoc -I=目录1 --java_out=目录2 文件3  
@@ -21,8 +20,6 @@ protoc -I helloworld/ helloworld/helloworld.proto --go_out=plugins=grpc:hellowor
 ```
 
 # RPC调用
-
-
 
 
 
@@ -48,6 +45,7 @@ docker run --name consul1 -d -p 8500:8500 -p 8300:8300 -p 8301:8301 -p 8302:8302
 
 docker run --name consul2 -d -p 8501:8500 consul agent -server -ui -bind=0.0.0.0 -client=0.0.0.0 -join 172.17.0.2
 docker run --name consul3 -d -p 8502:8500 consul agent -server -ui -bind=0.0.0.0 -client=0.0.0.0 -join 172.17.0.2
+
 <!-- 
 -d：表示后台运行 image-name:指定运行的镜像名称
 -p： 表示各种端口。8500:web ui端口 
@@ -57,9 +55,12 @@ docker inspect --format '{{ .NetworkSettings.IPAddress }}' consul2： 获取 con
 
 -->
 ```
-## 打开`http://192.168.1.107:8500/ui/dc1/nodes/0b8ff3e89bac` 查看节点信息
+## 查看节点信息,打开:
+`http://192.168.1.107:8500/ui/dc1/nodes/0b8ff3e89bac`
 
 
 
-# 参考：`https://www.cnblogs.com/chaselogs/p/11462954.html` 
-# 参考：`https://www.cnblogs.com/lonelyxmas/p/10880717.html`
+## 参考：
+`https://www.cnblogs.com/chaselogs/p/11462954.html` 
+
+`https://www.cnblogs.com/lonelyxmas/p/10880717.html`
